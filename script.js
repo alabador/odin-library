@@ -5,17 +5,21 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function() {
-        if (read === true) {
-            read = 'has read';
-        }
-        else if (read === false) {
-            read = 'not read yet'
-        }
-        return `${title} by ${author}, ${pages} pages, ${read}`;
-    }
 }
 
-function addBookToLibrary() {
+Book.prototype.info = function() {
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+}
 
+const bookA = new Book('test','abs',242,'read');
+const bookB = new Book('Tao of blah','seee',154,'have not read');
+
+function addBookToLibrary(book) {
+    myLibrary.push(book);
+}
+
+function displayBook() {
+    for(book of myLibrary){
+        console.log(book);
+    }
 }
