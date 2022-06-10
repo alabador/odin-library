@@ -1,3 +1,5 @@
+const libraryDiv = document.querySelector('.library-container');
+
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -20,6 +22,10 @@ function addBookToLibrary(book) {
 
 function displayBook() {
     for(book of myLibrary){
-        console.log(book);
+        let bookInfo = Object.values(book);
+        let bookDiv = document.createElement('div');
+        bookDiv.classList.add('book');
+        bookDiv.textContent = bookInfo;
+        libraryDiv.appendChild(bookDiv);
     }
 }
