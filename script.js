@@ -23,8 +23,8 @@ Book.prototype.info = function() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 }
 
-const bookA = new Book('test','abs',242,'read');
-const bookB = new Book('Tao of blah','seee',154,'have not read');
+// const bookA = new Book('test','abs',242,'read');
+// const bookB = new Book('Tao of blah','seee',154,'have not read');
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
@@ -58,9 +58,30 @@ function clearForm() {
     newUnreadStatus.checked = false;
 }
 
+function formToBook() {
+    const formTitle = newTitle.value;
+    const formAuthor = newAuthor.value;
+    const formPages = newPages.value;
+    let formReadStatus = '';
+    if (newReadStatus.checked === true && newUnreadStatus.checked === false) {
+        formReadStatus = 'read';
+    }
+    else if (newUnreadStatus.checked === true && newReadStatus.checked === false) {
+        formReadStatus = 'have not read';
+    }
+    else {
+        formReadStatus = 'have not read';
+    }
+    addBookToLibrary(new Book(formTitle, formAuthor, formPages, formReadStatus));
+}
+
 newButton.addEventListener('click', toggleForm);
 cancel.addEventListener('click', toggleForm);
 cancel.addEventListener('click', clearForm);
+add.addEventListener('click', formToBook);
+add.addEventListener('click', displayBook);
+add.addEventListener('click', toggleForm);
+add.addEventListener('click', clearForm);
 
 // open form
 // input data on form
