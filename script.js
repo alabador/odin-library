@@ -23,8 +23,6 @@ Book.prototype.info = function() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 }
 
-// const bookA = new Book('test','abs',242,'read');
-// const bookB = new Book('Tao of blah','seee',154,'have not read');
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
@@ -33,14 +31,16 @@ function addBookToLibrary(book) {
 function displayBook() {
     clearBooks();
     for(book of myLibrary){
-        let bookInfo = Object.values(book); // this is an array
+        //Turn object key-value properties into arrays
+        let bookInfo = Object.values(book); 
+        let bookKeys = Object.keys(book);
+
         let bookDiv = document.createElement('div');
         bookDiv.classList.add('book');
-        // bookDiv.textContent = bookInfo;
         libraryDiv.appendChild(bookDiv);
         for (let i=0; i<bookInfo.length; i++){
             let newPara = document.createElement('p');
-            newPara.textContent = bookInfo[i];
+            newPara.textContent = `${bookKeys[i]}: ${bookInfo[i]}`;
             bookDiv.appendChild(newPara);
         }
     }
@@ -92,12 +92,3 @@ add.addEventListener('click', formToBook);
 add.addEventListener('click', displayBook);
 add.addEventListener('click', toggleForm);
 add.addEventListener('click', clearForm);
-
-// open form [good]
-// input data on form [good]
-//1. pressing cancel clears form values/textcontent and hides form [good]
-//2. pressing add passes the values from inputs into a new iteration of constructor [good]
-//2.1 once new iteration made, clear values/textcontent and hide form [good]
-//3. new book is passed into addBookToLibrary() [good]
-//4. displayBook() to display books in array [need to fix duplicates]
-//5. ??? - to be continued
