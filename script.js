@@ -36,8 +36,13 @@ function displayBook() {
         let bookInfo = Object.values(book); // this is an array
         let bookDiv = document.createElement('div');
         bookDiv.classList.add('book');
-        bookDiv.textContent = bookInfo;
+        // bookDiv.textContent = bookInfo;
         libraryDiv.appendChild(bookDiv);
+        for (let i=0; i<bookInfo.length; i++){
+            let newPara = document.createElement('p');
+            newPara.textContent = bookInfo[i];
+            bookDiv.appendChild(newPara);
+        }
     }
 }
 
