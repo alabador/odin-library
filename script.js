@@ -31,8 +31,9 @@ function addBookToLibrary(book) {
 }
 
 function displayBook() {
+    clearBooks();
     for(book of myLibrary){
-        let bookInfo = Object.values(book);
+        let bookInfo = Object.values(book); // this is an array
         let bookDiv = document.createElement('div');
         bookDiv.classList.add('book');
         bookDiv.textContent = bookInfo;
@@ -40,7 +41,11 @@ function displayBook() {
     }
 }
 
-
+function clearBooks() {
+    while (libraryDiv.firstChild){
+        libraryDiv.removeChild(libraryDiv.lastChild);
+    }
+}
 
 /*Form*/
 function toggleForm() {
@@ -83,11 +88,11 @@ add.addEventListener('click', displayBook);
 add.addEventListener('click', toggleForm);
 add.addEventListener('click', clearForm);
 
-// open form
-// input data on form
-//1. pressing cancel clears form values/textcontent and hides form
-//2. pressing add passes the values from inputs into a new iteration of constructor
-//2.1 once new iteration made, clear values/textcontent and hide form
-//3. new book is passed into addBookToLibrary()
-//4. displayBook() to display books in array
+// open form [good]
+// input data on form [good]
+//1. pressing cancel clears form values/textcontent and hides form [good]
+//2. pressing add passes the values from inputs into a new iteration of constructor [good]
+//2.1 once new iteration made, clear values/textcontent and hide form [good]
+//3. new book is passed into addBookToLibrary() [good]
+//4. displayBook() to display books in array [need to fix duplicates]
 //5. ??? - to be continued
