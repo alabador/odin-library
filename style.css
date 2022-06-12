@@ -68,4 +68,5 @@ body {
     background-color: white;
     padding: 1rem;
     box-shadow: 2px 3px 6px 3px rgba(207, 207, 207, 0.712);
+    border-radius: 8px;
 }
