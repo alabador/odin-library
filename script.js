@@ -4,6 +4,9 @@ const form = document.querySelector('.new-book-form');
 const cancel = document.querySelector('.cancel');
 const add = document.querySelector('.add');
 
+/*Live node lists*/
+let books = libraryDiv.childNodes;
+
 let newTitle = document.querySelector('#title');
 let newAuthor = document.querySelector('#author');
 let newPages = document.querySelector('#pages');
@@ -37,14 +40,34 @@ function displayBook() {
 
         let bookDiv = document.createElement('div');
         bookDiv.classList.add('book');
+        bookDiv.dataset.index = myLibrary.indexOf(book);
         libraryDiv.appendChild(bookDiv);
+
+        //add book info to book
         for (let i=0; i<bookInfo.length; i++){
             let newPara = document.createElement('p');
             newPara.textContent = `${bookKeys[i]}: ${bookInfo[i]}`;
             bookDiv.appendChild(newPara);
         }
+
+        //Add delete button to book info
+        let bookDelete = document.createElement('button')
+        bookDelete.classList.add('delete');
+        bookDelete.textContent = 'Delete';
+        bookDelete.dataset.index = myLibrary.indexOf(book);
+        bookDiv.appendChild(bookDelete);
     }
 }
+
+function deleteBook() {
+    let deleteButtons = querySelectorAll('.delete');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.parentNode.parentNode.removeChild();
+        })
+    })
+}
+
 
 function clearBooks() {
     while (libraryDiv.firstChild){
@@ -92,3 +115,7 @@ add.addEventListener('click', formToBook);
 add.addEventListener('click', displayBook);
 add.addEventListener('click', toggleForm);
 add.addEventListener('click', clearForm);
+
+//currently dataset of button matches datset of book div
+// todo: find outt where to put event listener 
+// how to delete div based on delete button pressed
