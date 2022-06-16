@@ -41,7 +41,6 @@ function displayBook() {
 
         let bookDiv = document.createElement('div');
         bookDiv.classList.add('book');
-        bookDiv.dataset.index = myLibrary.indexOf(book);
         libraryDiv.appendChild(bookDiv);
 
         //add book info to book
@@ -55,13 +54,35 @@ function displayBook() {
         let bookDelete = document.createElement('button')
         bookDelete.classList.add('delete');
         bookDelete.textContent = 'Delete';
-        bookDelete.dataset.index = myLibrary.indexOf(book);
         bookDiv.appendChild(bookDelete);
+
+        //Add read button to toggle read status
+        let bookRead = document.createElement('button')
+        bookRead.classList.add('read');
+        bookRead.textContent = 'Read';
+        bookDiv.appendChild(bookRead);
+
+        //add event listener on read button
+        //myLibrary.indexOf(book)
+        //use book.read, set it to something else (if else conditional)
+        bookRead.addEventListener('click', () => {
+            let nodes = bookDiv.querySelectorAll('p');
+            let lastNode = nodes[nodes.length - 1];
+            if (book.read == 'read'){
+                book.read = 'have not read';
+                lastNode.textContent = 'read: have not read';
+            }
+            else if (book.read == 'have not read'){
+                book.read = 'read';
+                lastNode.textContent = 'read: read';
+            }
+        })
     }
     deleteButtons = document.querySelectorAll('.delete');
     deleteBook();
 }
 
+//Removes book node and corresponding book object based on index
 function deleteBook() {
     deleteButtons.forEach(function(button, currentIndex) {
         button.addEventListener('click', (e) => {
@@ -71,7 +92,7 @@ function deleteBook() {
     })
 }
 
-
+//Clears books from array used to populate library, prevents duplicates
 function clearBooks() {
     while (libraryDiv.firstChild){
         libraryDiv.removeChild(libraryDiv.lastChild);
@@ -119,5 +140,5 @@ add.addEventListener('click', displayBook);
 add.addEventListener('click', toggleForm);
 add.addEventListener('click', clearForm);
 
-// todo: find outt where to call deleteBook(); 
-// find out how
+// todo: click button
+// toggle read status on prototype instance
