@@ -46,7 +46,7 @@ function displayBook() {
         //add book info to book
         for (let i=0; i<bookInfo.length; i++){
             let newPara = document.createElement('p');
-            newPara.textContent = `${bookKeys[i]}: ${bookInfo[i]}`;
+            newPara.textContent = `${bookKeys[i].toUpperCase()}: ${bookInfo[i]}`;
             bookDiv.appendChild(newPara);
         }
 
@@ -69,10 +69,10 @@ function displayBook() {
             let nodes = bookDiv.querySelectorAll('p');
             let lastNode = nodes[nodes.length - 1];
             if (book.read == 'read'){
-                book.read = 'have not read';
-                lastNode.textContent = 'read: have not read';
+                book.read = 'not read yet';
+                lastNode.textContent = 'read: not read yet';
             }
-            else if (book.read == 'have not read'){
+            else if (book.read == 'not read yet'){
                 book.read = 'read';
                 lastNode.textContent = 'read: read';
             }
@@ -124,10 +124,10 @@ function formToBook() {
         formReadStatus = 'read';
     }
     else if (newUnreadStatus.checked === true && newReadStatus.checked === false) {
-        formReadStatus = 'have not read';
+        formReadStatus = 'not read yet';
     }
     else {
-        formReadStatus = 'have not read';
+        formReadStatus = 'not read yet';
     }
     addBookToLibrary(new Book(formTitle, formAuthor, formPages, formReadStatus));
 }
