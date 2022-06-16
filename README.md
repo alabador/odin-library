@@ -1,5 +1,18 @@
 # odin-library
-Practicing js objects, constructors and prototypes
+A library app used to store books and their information provided through user input.
 
-## To-Do/Next Steps
-I'll try to make the library container into a table on a version 2. The ones I've seen that do a table format were pretty clean.
+[Live Demo](https://alabador.github.io/odin-library/)
+
+## Built With
+- HTML5, CSS3, and JavaScript
+
+## Resources Used
+- [Material Design Icons](https://materialdesignicons.com/)
+- [Snippets of Normalize.css](https://necolas.github.io/normalize.css/)
+
+## Learning Outcomes 
+- Use of JS Objects, Constructors, and Prototypes
+- Customizing Forms
+- Practice with Grid/Flex
+- Practice with loops and events
+- Learning subtle difference between nodes and elements
