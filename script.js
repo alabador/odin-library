@@ -33,7 +33,9 @@ function addBookToLibrary(book) {
 }
 
 function displayBook() {
-    clearBooks();
+    if (myLibrary.length > 0) {
+        clearBooks();
+    }
     for(book of myLibrary){
         //Turn object key-value properties into arrays
         let bookInfo = Object.values(book); 
